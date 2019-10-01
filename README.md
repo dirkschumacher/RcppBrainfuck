@@ -37,7 +37,8 @@ This is a basic example which shows you how to solve a common problem:
 library(RcppBrainfuck)
 ```
 
-Here is a “Hello World” program:
+Here is a “Hello World” program taken from
+[Wikipedia](https://en.wikipedia.org/wiki/Brainfuck):
 
 ``` r
 code <- "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++."

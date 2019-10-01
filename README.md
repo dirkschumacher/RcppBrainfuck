@@ -9,8 +9,11 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
-The goal of `RcppBrainfuck` is to compile brainfuck code to C++ code
+The goal of `RcppBrainfuck` is to compile
+[brainfuck](https://en.wikipedia.org/wiki/Brainfuck) code to C++ code
 that can be run from R.
+
+*NOT ENTERPRISE READY*
 
 ## Installation
 
@@ -24,7 +27,7 @@ remotes::install_github("dirkschumacher/RcppBrainfuck")
 The package essentially just implements the translated brainfuck \<-\> C
 OP codes from
 [Wikipedia](https://en.wikipedia.org/wiki/Brainfuck#Commands). It is
-just for fun and was an evening hack. Not for enterprise production.
+just for fun and was an evening hack.
 
 ## Example
 
@@ -56,8 +59,8 @@ as.integer(cells[[1L]])
 #> [1] 5
 ```
 
-But we can also construct our own cell raw array and pass it to the
-function.
+In order to input values we need to construct our own cell raw array and
+pass it to the function.
 
 ``` r
 cells2 <- fun(cells)

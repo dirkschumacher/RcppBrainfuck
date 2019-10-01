@@ -42,8 +42,8 @@ Here is a “Hello World” program taken from
 
 ``` r
 code <- "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++."
-fun <- compile(code)
-invisible(fun())
+hello <- compile(code)
+invisible(hello())
 #> Hello World!
 ```
 
@@ -54,8 +54,8 @@ Memory.
 # add 2 to the first cell and then add 3 to the second cell
 # and then while the second cell is not 0, decrement it and increment the first one
 code <- "++>+++[<+>-]" 
-fun <- compile(code)
-cells <- fun()
+add <- compile(code)
+cells <- add()
 as.integer(cells[[1L]])
 #> [1] 5
 ```
@@ -64,7 +64,7 @@ In order to input values we need to construct our own cell raw array and
 pass it to the function.
 
 ``` r
-cells2 <- fun(cells)
+cells2 <- add(cells)
 # passing in 7 for the first value we expect 10 as the final result
 as.integer(cells2[[1L]])
 #> [1] 10

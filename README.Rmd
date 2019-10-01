@@ -1,0 +1,76 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# RcppBrainfuck
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+<!-- badges: end -->
+
+The goal of `RcppBrainfuck` is to compile brainfuck code to C++ code that can be run from R.
+
+## Installation
+
+You can install the released version of RcppBrainfuck from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+remotes::install_github("dirkschumacher/RcppBrainfuck")
+```
+
+The package essentially just implements the translated brainfuck <-> C OP codes from [Wikipedia](https://en.wikipedia.org/wiki/Brainfuck#Commands). It is just for fun and was an evening hack. Not for enterprise production.
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(RcppBrainfuck)
+```
+
+Here is a "Hello World" program:
+
+```{r cars}
+code <- "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++."
+fun <- compile(code)
+invisible(fun())
+```
+
+But you can also communicate with the Brainfuck code using a shared Memory.
+
+```{r}
+# add 2 to the first cell and then add 3 to the second cell
+# and then while the second cell is not 0, decrement it and increment the first one
+code <- "++>+++[<+>-]" 
+fun <- compile(code)
+cells <- fun()
+as.integer(cells[[1L]])
+```
+
+But we can also construct our own cell raw array and pass it to the function.
+
+```{r}
+cells2 <- fun(cells)
+# passing in 7 for the first value we expect 10 as the final result
+as.integer(cells2[[1L]])
+```
+
+## References 
+
+* https://en.wikipedia.org/wiki/Brainfuck
+
+## Related Projects
+
+* https://bitbucket.org/richierocks/brainfuck
+
+

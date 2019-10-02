@@ -35,13 +35,13 @@ compile <- function(brainfuck_code) {
 get_cpp_instruction <- function(op) {
   switch(op,
     ">" = "++ptr;",
-    "<" =	"--ptr;",
-    "+" =	"++*ptr;",
-    "-" =	"--*ptr;",
-    "." =	"Rcout << *ptr;",
-    "," =	"*ptr=std::getchar();",
-    "[" =	"while (*ptr) {",
-    "]" =	"};",
+    "<" = "--ptr;",
+    "+" = "++*ptr;",
+    "-" = "--*ptr;",
+    "." = "Rcout << *ptr;",
+    "," = "*ptr=std::getchar();",
+    "[" = "while (*ptr) {",
+    "]" = "};",
     ""
   )
 }
